@@ -17,7 +17,7 @@ var RSVPVerifier = (function () {
         })
         .done(postverify)
         .fail(function (xhr, error, status) {
-            $('.rsvp-messaging').empty().append('<p class="alert alert-danger">Could not complete action: ' + error + ' (' + status + ')</p>');
+            $('.rsvp-messaging').empty().append('<p class="alert alert-danger">Could not verify your email: ' + error + ' (' + status + ')</p>');
         })
         .always(function () {
             window.clearInterval(intervalId);
@@ -35,12 +35,17 @@ var RSVPVerifier = (function () {
     };
 
     function buildguestform(data) {
-        $('.rsvp .email').attr('disabled', 'disabled');
-        $('.rsvp .verify-container').replaceWith('<div class="col-lg-4 col-lg-offset-4 col-xs-12 form-group"><button class="submit-rsvp btn btn-primary btn-lg">RSVP!</button</div>');
+        var splits = data.split(' ');
+        var name = splits[1];
+        var email = splits[2];
 
-        $('.rsvp-messaging').append('<p>Found email address "' + data.split(' ')[1] + '"!<br/>Please enter your name and those of your guests below:</p>');
-        $('.rsvp .guests').append('<div class="form-group"><input type="text" class="form-control guestinput input-lg" placeholder="Name of first guest" name="guests[0]" /></div>');
-        $('.rsvp .guests').append('<div class="form-group"><button class="addguest btn btn-default btn-lg">Add guest</button></div>');
+        $('.rsvp .email').replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
+        $('.rsvp .verify-container').replaceWith('<div class="form-group"><button class="col-lg-2 col-lg-offset-5 col-xs-4 col-xs-offset-4 submit-rsvp btn btn-primary btn-lg">RSVP!</button</div>');
+
+        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + name + '!<br/><small>(' + email + ')</small><br/>Please enter the name of your guests below:</p>');
+        $('.rsvp .guests').append('<div class="form-group"><input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+name+'" /></div>');
+        $('.rsvp .guests').append('<div class="form-group"><input type="text" class="form-control guestinput input-lg" placeholder="Name of first guest" name="guests[1]" /></div>');
+        $('.rsvp .guests').append('<div class="form-group"><button class="addguest btn btn-default"><b>&plus;</b> Add Guest</button></div>');
 
         $('.rsvp .addguest:last').on('click', function (e) {
             e.preventDefault();
@@ -51,20 +56,32 @@ var RSVPVerifier = (function () {
         $('.rsvp .submit-rsvp').on('click', function (e) {
             e.preventDefault();
             $(this).prop('disabled', true);
-            $(this).after('<p class="post-rsvp-message">Submitting your RSVP...</p>');
+            $(this).after('<p class="clearfix col-lg-12 col-xs-12 post-rsvp-message">Submitting your RSVP...</p>');
 
             $.ajax({
                 url: rsvp_submit_ajax_url,
                 data: $('.rsvp').serialize(),
                 type: 'post'
             })
-            .done(postrsvp);
+            .done(postrsvp)
+            .fail(rsvperror);
         });
     }
 
+    function rsvperror(xhr, error, status) {
+        $('.rsvp-messaging').empty().append('<p class="alert alert-danger">Could not RSVP: ' + error + ' (' + status + '). You should let Andy know.</p>');
+    }
+
     function postrsvp(data) {
-        console.log('post rsvp:');
-        console.log(data);
+        var guestlist = data.split('|');
+        var guestliststr = guestlist.join(', ');
+
+        $('.rsvp').fadeOut(function () {
+            $(this).replaceWith('<p class="rsvp-success">Successfully RSVP\'d with '+guestlist.length+' guest(s): ' + guestliststr + '</p>');
+            $('a[href="#rsvp"]').click();
+        });
+
+        $('.rsvp-messaging').fadeOut(function () { $(this).remove(); });
     }
 
     return { verify: verify };
