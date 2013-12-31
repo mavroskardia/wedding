@@ -1,0 +1,112 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sarah and Andy's Wedding - August 31st, 2014</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+</head>
+<body>
+    <nav id="menu" class="nav navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#home"><span class="love">&hearts;</span></a>
+            <a class="navbar-brand" href="#ceremony">Ceremony</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="navbar-nav nav">
+                <li><a href="#lodging">Lodging</a></li>
+                <li><a href="#registry">Registry</a></li>
+                <li><a href="#other_events">Other Events</a></li>
+                <li><a href="#middlebury">Middlebury</a></li>
+                <li><a href="#transportation">Transportation</a></li>
+                <li><a href="#carpooling">Carpooling</a></li>
+                <li><a href="#roomshare">Room Sharing</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+        </div>
+    </nav>
+    <a id="home"></a>
+    <div class="contents">
+        <div class="container text-center">
+            <section class="row">
+                <div class="intro col-xs-12 col-lg-12">
+                    <p><strong>Andy</strong>and <strong>Sarah</strong></p>
+                    <p>are getting hitched</p>
+                    <p><strong>8.31.14</strong></p>
+                    <p>at Cottonwood</p>
+                    <p>in West Addison, VT</p>
+                </div>
+            </section>
+            <section id="ceremony">
+                <h2>Ceremony</h2>
+            </section>
+            <section id="lodging">
+                <h2>Lodging near Cottonwood</h2>
+                <p class="col-xs-12">The map shows camping, bed and breakfast, and hotel options near the ceremony. Other places to look include <a href="#">Airbnb</a> or <a href="#">VRBO</a>.</p>
+                <div class="col-xs-12">
+                    <iframe class="lodgingmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=44.10731,-73.292542&amp;spn=0.35745,0.668106&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&msa=0&ll=44.10731,-73.292542&spn=0.35745,0.668106&dg=feature" style="text-align:left">Wedding Accommodations</a> in a larger map</small>
+                    <!--<iframe height="300" frameborder="0" class="lodgingmap" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55507.598545783374!2d-82.394261!3d29.5971475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1387247313489"></iframe>-->
+                </div>
+            </section>
+            <section id="registry">
+                <h2>Registry</h2>
+            </section>
+            <section id="other_events">
+                <h2>Other Events</h2>
+            </section>
+            <section id="middlebury">
+                <h2>Things to do in Middlebury</h2>
+            </section>
+            <section id="transportation">
+                <h2>Getting Here</h2>
+                <p class="col-xs-12">
+                    This will describe the various types of transportation you might need to get around in Vermont.
+                </p>
+            </section>
+            <section id="carpooling">
+                <h2>Carpooling</h2>
+            </section>
+            <section id="roomshare">
+                <h2>Coordinate Sharing Rooms</h2>
+            </section>
+            <section id="rsvp">
+                <h2>RSVP</h2>
+                {% block rsvp %}
+                {% endblock %}
+            </section>
+            <section id="theend">
+                <h2>The end...?</h2>
+            </section>
+            <section id="begin">
+                <h2>Or just the beginning! <span class="love">&hearts;</span></h2>
+            </section>
+        </div>
+    </div>
+
+    <div class="fg"></div>
+
+    <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var rsvp_ajax_url = '{% url "rsvp_ajax" %}';
+    </script>    
+    <script type="text/javascript" src="{% static "js/script.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block rsvp %}
+<div class="row">
+    <div class="rsvp-messaging col-xs-10 col-xs-offset-1 col-lg-4 col-lg-offset-4 clearfix"></div>
+</div>
+<div class="row">
+    <form class="rsvp" action="" method="post">
+        {% csrf_token %}
+        <div class="col-lg-4 col-lg-offset-4 col-xs-10 col-xs-offset-1 form-group">
+            <input type="email" name="email" placeholder="Enter your email address" class="form-control email input-lg" />
+        </div>
+        <div class="guests col-lg-4 col-lg-offset-4 col-xs-10 col-xs-offset-1">
+        </div>
+        <div class="col-lg-4 col-lg-offset-4 col-xs-10 col-xs-offset-1 form-group verify-container">
+            <button type="submit" class="verify btn btn-primary btn-lg">Verify</button>
+        </div>    
+    </form>    
+</div>
+{% endblock %}    
