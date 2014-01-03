@@ -39,18 +39,38 @@ var RSVPVerifier = (function () {
         var name = splits[1];
         var email = splits[2];
 
-        $('.rsvp .email').replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
-        $('.rsvp .verify-container').replaceWith('<div class="form-group"><button class="col-lg-2 col-lg-offset-5 col-xs-4 col-xs-offset-4 submit-rsvp btn btn-primary btn-lg">RSVP!</button</div>');
+        $('.rsvp .email').parent().replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
 
-        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + name + '!<br/><small>(' + email + ')</small><br/>Please enter the name of your guests below:</p>');
-        $('.rsvp .guests').append('<div class="form-group"><input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+name+'" /></div>');
-        $('.rsvp .guests').append('<div class="form-group"><input type="text" class="form-control guestinput input-lg" placeholder="Name of first guest" name="guests[1]" /></div>');
-        $('.rsvp .guests').append('<div class="form-group"><button class="addguest btn btn-default"><b>&plus;</b> Add Guest</button></div>');
+        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + name + '!<br/>\
+            <small>(' + email + ')</small><br/>\
+            Please enter the name of your guests or indicate you will be unable to attend below:</p>');
+
+        $('.rsvp .verify-container').replaceWith('<div class="form-group">\
+                    <label class="col-lg-12 col-xs-12">\
+                        <input type="checkbox" class="form-control" name="notattending" value="true" />\
+                        Unable to attend\
+                    </label>\
+                </div>\
+                <div class="form-group">\
+                    <button class="col-lg-2 col-lg-offset-5 col-xs-4 col-xs-offset-4 submit-rsvp btn btn-primary btn-lg">RSVP!</button>\
+                </div>');
+
+        $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
+            <input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+name+'" />\
+            </div>');
+
+        $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
+            <input type="text" class="form-control guestinput input-lg" placeholder="Name of first guest" name="guests[1]" />\
+            </div>');
+
+        $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
+            <button class="addguest btn btn-default"><b>&plus;</b> Add Guest</button>\
+            </div>');
 
         $('.rsvp .addguest:last').on('click', function (e) {
             e.preventDefault();
             var numGuests = $('.guestinput').length;
-            $('.rsvp .guests .guestinput:last').parent().after('<div class="form-group"><input type="text" class="form-control guestinput input-lg" placeholder="Name of next guest" name="guests['+(numGuests)+']" /></div>');
+            $('.rsvp .guests .guestinput:last').parent().after('<div class="form-group col-lg-4 col-lg-offset-4"><input type="text" class="form-control guestinput input-lg" placeholder="Name of next guest" name="guests['+(numGuests)+']" /></div>');
         });
 
         $('.rsvp .submit-rsvp').on('click', function (e) {
@@ -61,6 +81,7 @@ var RSVPVerifier = (function () {
             $.ajax({
                 url: rsvp_submit_ajax_url,
                 data: $('.rsvp').serialize(),
+                dataType: 'json',
                 type: 'post'
             })
             .done(postrsvp)
@@ -73,11 +94,18 @@ var RSVPVerifier = (function () {
     }
 
     function postrsvp(data) {
-        var guestlist = data.split('|');
-        var guestliststr = guestlist.join(', ');
+        var message = 'Successfully RSVP\'d';
+
+        if (data.response == 'no') {
+            message += '. We are sorry you cannot attend!';
+        } else {
+            var guestlist = data.split('|');
+            var guestliststr = guestlist.join(', ');
+            message += 'with ' + guestlist.length + ' guest(s): ' + guestliststr;
+        }
 
         $('.rsvp').fadeOut(function () {
-            $(this).replaceWith('<p class="rsvp-success">Successfully RSVP\'d with '+guestlist.length+' guest(s): ' + guestliststr + '</p>');
+            $(this).replaceWith('<p class="rsvp-success">' + message + '</p>');
             $('a[href="#rsvp"]').click();
         });
 

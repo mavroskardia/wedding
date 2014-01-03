@@ -66,15 +66,15 @@ h2 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.75);
 }
 
-h3 { 
+h3 {
     font-size: 100%;
-    font-family: "Candal", sans-serif;    
+    font-family: "Candal", sans-serif;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.75);
     text-align: center;
 }
 
-section {    
-    width: 100%;   
+section {
+    width: 100%;
     left: 0;
     padding-top: 50px;
     margin-bottom: 1000px;
@@ -83,7 +83,7 @@ section {
 section p { font-size: 80%; padding: 0 10px; }
 section ul { font-size: 70%; }
 section ul li { margin-bottom: 0.5em; }
-    
+
 #intro {
     position: relative;
     font-size: 150%;
@@ -110,3 +110,5 @@ section ul li { margin-bottom: 0.5em; }
 }
 
 .relative { position: relative; }
+
+input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }

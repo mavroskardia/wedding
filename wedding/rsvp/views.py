@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+import json
 
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from rsvp.models import Guest
@@ -25,15 +26,22 @@ def rsvp_ajax(req):
 
 def rsvp_submit_ajax(req):
 
+    ret = {}
+
     if req.method != 'POST':
-        return HttpResponse('failure')
+        ret['response'] = 'failure'
+    else:
+        if req.POST['notattending']:
+            ret['response'] = 'no'
+        else:
+            guest = Guest.objects.get(email=req.POST['rsvp_email'])
+            guestlist = [guest.name,]
 
-    guest = Guest.objects.get(email=req.POST['rsvp_email'])
+            for name in req.POST:
+                if name.startswith('guests') and req.POST[name].strip():
+                    guestlist.append(req.POST[name].strip())
 
-    guestlist = [guest.name,]
+            ret['response'] = 'yes'
+            ret['guests'] = '|'.join(guestlist)
 
-    for name in req.POST:
-        if name.startswith('guests') and req.POST[name].strip():
-            guestlist.append(req.POST[name].strip())
-
-    return HttpResponse('|'.join(guestlist))
+    return HttpResponse(json.dumps(ret), content_type='application/json')
