@@ -96,6 +96,10 @@ section ul li { margin-bottom: 0.5em; }
     font-weight: normal;
 }
 
+#begin {
+    margin-bottom: 400px;
+}
+
 .love {
     color: #900;
     text-shadow: 0 -1px 1px #f00;
