@@ -9,7 +9,9 @@ body {
 }
 
 a { color: #f0B435; font-weight: bold; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
-a:hover { color: #b4f035; }
+a:hover { color: #b4f035; text-decoration: none; }
+
+a.thumbnail small { font-size: 50%; color: #444; }
 
 a, strong { font-family: "Candal", Arial, sans-serif; font-weight: normal; }
 
@@ -68,6 +70,7 @@ h3 {
     font-size: 100%;
     font-family: "Candal", sans-serif;    
     text-shadow: 2px 2px 3px rgba(0,0,0,0.75);
+    text-align: center;
 }
 
 section {    
