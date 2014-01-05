@@ -48,6 +48,8 @@ a, strong { font-family: "Candal", Arial, sans-serif; font-weight: normal; }
         width: 768px;
     }
 
+    .contents { font-size: 150%; }
+
     .lodgingmap { width: 300px; height: 300px; }
 }
 
@@ -82,7 +84,6 @@ section ul li { margin-bottom: 0.5em; }
 #intro {
     position: relative;
     font-size: 150%;
-    margin-top: 50px;
     font-family: "Grand Hotel", Arial, sans-serif;
     height: 1000px;
 }
