@@ -36,17 +36,17 @@
                 <li><a href="#lodging">Lodging</a></li>
                 <li><a href="#dining">Dining</a></li>                
                 <li><a href="#transportation">Transportation</a></li>
-                <li><a href="#registry">Registry</a></li>
                 <li><a href="#carpooling">Carpooling</a></li>
                 <li><a href="#roomshare">Room Sharing</a></li>
                 <li><a href="#rsvp">RSVP</a></li>
+                <li><a href="#registry">Registry</a></li>
             </ul>
         </div>
     </nav>
     <a id="home"></a>
     <div class="contents">
         <div class="container text-center">
-            <section id="intro" class="row">
+            <section id="intro">
                 <div class="col-xs-12 col-lg-12">
                     <p><strong>Andy</strong>and <strong>Sarah</strong></p>
                     <p>are getting hitched</p>
@@ -54,62 +54,27 @@
                     <p>at Cottonwood</p>
                     <p>in West Addison, VT</p>
                 </div>
+                <div class="col-lg-6 col-lg-offset-3 clearfix">
+                    <a href="{% static "i/f2t.jpg" %}" class="thumbnail">
+                        <img src="{% static "i/f2t.jpg" %}" data-src="{% static "i/f2t.jpg" %}" alt="Sarah and Andy at Shelburne Farms" />
+                    </a>
+                </div>
             </section>
             <section id="jumpto">
                 <p>Click on the menu items above to skip to a particular section or just keep scrolling!</p>
             </section>
-            <section id="ceremony" class="row">
+            <section id="ceremony">
                 <h2>Ceremony</h2>
+                <p>
+                    <strong>4:30 PM</strong> Ceremony begins.
+                </p>
             </section>
-            <section class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <a href="{% static "i/shelburne.jpg" %}" class="thumbnail">
-                        <img src="{% static "i/shelburne.jpg" %}" data-src="{% static "i/shelburne.jpg" %}" alt="Sarah and Andy at Shelburne Farms" />
-                    </a>
-                </div>
-            </section>
-            <section id="lodging" class="row">
-                <h2>Lodging near Cottonwood</h2>
-                <p class="col-xs-12">The map shows camping, bed and breakfast, and hotel options near the ceremony. Other places to look include <a href="#">Airbnb</a> or <a href="#">VRBO</a>.</p>
-                <div class="col-xs-12">
-                    <iframe class="lodgingmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=44.10731,-73.292542&amp;spn=0.35745,0.668106&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&msa=0&ll=44.10731,-73.292542&spn=0.35745,0.668106&dg=feature" style="text-align:left">Wedding Accommodations</a> in a larger map</small>
-                    <!--<iframe height="300" frameborder="0" class="lodgingmap" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55507.598545783374!2d-82.394261!3d29.5971475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1387247313489"></iframe>-->
-                </div>
-            </section>
-            <section class="row">
-                <div class="col-lg-12 col-lg-offset-1">
-                    <div class="col-lg-3 col-xs-12">
-                        <a href="{% static "i/image_5.jpeg" %}" class="thumbnail">
-                            <img src="{% static "i/image_5.jpeg" %}" data-src="{% static "i/image_5.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-xs-12">
-                        <a href="{% static "i/image_3.jpeg" %}" class="thumbnail">
-                            <img src="{% static "i/image_3.jpeg" %}" data-src="{% static "i/image_3.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-xs-12">
-                        <a href="{% static "i/image_1.jpeg" %}" class="thumbnail">
-                            <img src="{% static "i/image_1.jpeg" %}" data-src="{% static "i/image_1.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
-                        </a>
-                    </div>
-                </div>
-            </section>
-            <section id="registry" class="row">
-                <h2>Registry</h2>
-            </section>
-            <section class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <a href="{% static "i/farmtotable.jpg" %}" class="thumbnail">
-                        <img src="{% static "i/farmtotable.jpg" %}" data-src="{% static "i/farmtotable.jpg" %}" alt="Sarah and Andy at Shelburne Farms" />
-                    </a>
-                </div>
-            </section>
-            <section id="other_events" class="row">
+            <section id="other_events">
                 <h2>Other Events</h2>
                 <div class="col-lg-8 col-lg-offset-2 text-left">
                     <h3>Saturday</h3>
-                    <p><strong>11:00 AM</strong> Join us for a late morning hike up
+                    <p>
+                        <strong>11:00 AM</strong> Join us for a late morning hike up
                         <a href="http://www.vtfishandwildlife.com/library/maps/Wildlife%20Management%20Areas/Essex%20District/Snake%20Mountain%20WMA.pdf">Snake Mountain</a>.
                         We like to pack sandwiches (and maybe one of the great local microbrews!) to enjoy at the top with a view overlooking the Champlain Valley.
                         We generally use the western-most trail entrance (there is a tiny parking lot just down the road to the North so carpool if you can).
@@ -118,10 +83,31 @@
     
                     <a href="https://mapsengine.google.com/map/edit?mid=zfW0kk3OVnOE.kDUfhuPdgZHQ">Hiking Map (to be embedded)</a>
     
-                    <p><strong>6:30 PM</strong> We want to welcome all of our traveling guests with a Wisconsin-style brat fry!  Make your way down to Cottonwood to enjoy an afternoon of lawn games and lake time while we serve up brats from Andy's hometown alongside kebabs, tabouli, and salads.</p>
+                    <p>
+                        <strong>6:30 PM</strong> We want to welcome all of our traveling guests with a Wisconsin-style brat fry!  
+                        Make your way down to Cottonwood to enjoy an afternoon of lawn games and lake time while we serve up brats
+                        from Andy's hometown alongside kebabs, tabouli, and salads.
+                    </p>
                 </div>
+                <div class="col-lg-12 clearfix">
+                    <div class="col-lg-4 col-xs-12">
+                        <a href="{% static "i/image_5.jpeg" %}" class="thumbnail">
+                            <img src="{% static "i/image_5.jpeg" %}" data-src="{% static "i/image_5.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-xs-12">
+                        <a href="{% static "i/image_3.jpeg" %}" class="thumbnail">
+                            <img src="{% static "i/image_3.jpeg" %}" data-src="{% static "i/image_3.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-xs-12">
+                        <a href="{% static "i/image_1.jpeg" %}" class="thumbnail">
+                            <img src="{% static "i/image_1.jpeg" %}" data-src="{% static "i/image_1.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
+                        </a>
+                    </div>
+                </div>                
             </section>
-            <section id="sightseeing" class="row">
+            <section id="sightseeing">
                 <h2>Sight-seeing</h2>
                 <div class="col-lg-8 col-lg-offset-2 text-left">
                     <p>Adventure abounds in Vermont!  If you are looking to supplement your visit, we recommend some of the following activities:</p>
@@ -163,8 +149,22 @@
                         </li>
                     </ul>
                 </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-6 col-lg-offset-3">
+                    <a href="{% static "i/shelburne.jpg" %}" class="thumbnail">
+                        <img src="{% static "i/shelburne.jpg" %}" data-src="{% static "i/shelburne.jpg" %}" alt="Sarah and Andy at Shelburne Farms" />
+                    </a>
+                </div>
             </section>
-            <section id="dining" class="row">
+            <section id="lodging">
+                <h2>Lodging near Cottonwood</h2>
+                <p class="col-xs-12">The map shows camping, bed and breakfast, and hotel options near the ceremony. Other places to look include <a href="#">Airbnb</a> or <a href="#">VRBO</a>.</p>
+                <div class="col-xs-12">
+                    <iframe class="lodgingmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=44.10731,-73.292542&amp;spn=0.35745,0.668106&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&msa=0&ll=44.10731,-73.292542&spn=0.35745,0.668106&dg=feature" style="text-align:left">Wedding Accommodations</a> in a larger map</small>
+                    <!--<iframe height="300" frameborder="0" class="lodgingmap" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55507.598545783374!2d-82.394261!3d29.5971475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1387247313489"></iframe>-->
+                </div>
+            </section>
+            <section id="dining">
                 <h2>Dining</h2>
                 <div class="col-lg-8 col-lg-offset-2 text-left">
                     <h3>Bakeries and Tasty Treats</h3>
@@ -185,7 +185,7 @@
                     <p>See the <a href="https://mapsengine.google.com/map/edit?mid=zfW0kk3OVnOE.kDUfhuPdgZHQ">hiking map</a> for casual lunch recommendations.</p>
                 </div>
             </section>
-            <section id="transportation" class="row">
+            <section id="transportation">
                 <h2>Getting Here</h2>
                 <div class="col-lg-8 col-lg-offset-2 text-left">
                     <h3>Air</h3>
@@ -215,18 +215,21 @@
                     </p>    
                 </div>
             </section>
-            <section id="carpooling" class="row">
+            <section id="carpooling">
                 <h2>Carpooling</h2>
                 <p>Coming soon!</p>
             </section>
-            <section id="roomshare" class="row">
+            <section id="roomshare">
                 <h2>Coordinate Sharing Rooms</h2>
                 <p>Coming soon!</p>
             </section>
-            <section id="rsvp" class="row">
+            <section id="rsvp">
                 <h2>RSVP</h2>
                 {% block rsvp %}
                 {% endblock %}
+            </section>
+            <section id="registry">
+                <h2>Registry</h2>
             </section>
             <section id="theend">
                 <h2>The end...?</h2>
