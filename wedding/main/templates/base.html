@@ -45,8 +45,8 @@
     <a id="home"></a>
     <div class="contents">
         <div class="container text-center">
-            <section class="row">
-                <div class="intro col-xs-12 col-lg-12">
+            <section id="intro" class="row">
+                <div class="col-xs-12 col-lg-12">
                     <p><strong>Andy</strong>and <strong>Sarah</strong></p>
                     <p>are getting hitched</p>
                     <p><strong>8.31.14</strong></p>
@@ -55,12 +55,12 @@
                 </div>
             </section>
             <section id="jumpto">
-                <p>Click on the menu above to jump to each section, or just keep scrolling!</p>
+                <p>Click on the menu items above to skip to a particular section or just keep scrolling!</p>
             </section>
-            <section id="ceremony">
+            <section id="ceremony" class="row">
                 <h2>Ceremony</h2>
             </section>
-            <section id="lodging">
+            <section id="lodging" class="row">
                 <h2>Lodging near Cottonwood</h2>
                 <p class="col-xs-12">The map shows camping, bed and breakfast, and hotel options near the ceremony. Other places to look include <a href="#">Airbnb</a> or <a href="#">VRBO</a>.</p>
                 <div class="col-xs-12">
@@ -68,29 +68,36 @@
                     <!--<iframe height="300" frameborder="0" class="lodgingmap" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55507.598545783374!2d-82.394261!3d29.5971475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1387247313489"></iframe>-->
                 </div>
             </section>
-            <section id="registry">
+            <section id="registry" class="row">
                 <h2>Registry</h2>
             </section>
-            <section id="other_events">
+            <section id="other_events" class="row">
                 <h2>Other Events</h2>
-                <h3>Saturday</h3>
-                <p>11:00 AM: Join us for a late morning hike up <a href="http://www.vtfishandwildlife.com/library/maps/Wildlife%20Management%20Areas/Essex%20District/Snake%20Mountain%20WMA.pdf">Snake Mountain</a>. We like to pack sandwiches (and maybe one of the great local microbrews!) to enjoy at the top with a view overlooking the Champlain Valley.  We generally use the western-most trail entrance (there is a tiny parking lot just down the road to the North so carpool if you can!) Please view the map below for info on parking, trail, and sandwich shop suggestions.</p>
-
-                <a href="https://mapsengine.google.com/map/edit?mid=zfW0kk3OVnOE.kDUfhuPdgZHQ">Hiking Map (to be embedded)</a>
-
-                <p>6:30 PM: We want to welcome all of our traveling guests with a Wisconsin-style brat fry!  Make your way down to Cottonwood to enjoy an afternoon of lawn games and lake time while we serve up brats from Andy's hometown alongside kebabs, tabouli, and salads.</p>
+                <div class="col-lg-8 col-lg-offset-2 text-left">
+                    <h3>Saturday</h3>
+                    <p><strong>11:00 AM</strong> Join us for a late morning hike up
+                        <a href="http://www.vtfishandwildlife.com/library/maps/Wildlife%20Management%20Areas/Essex%20District/Snake%20Mountain%20WMA.pdf">Snake Mountain</a>.
+                        We like to pack sandwiches (and maybe one of the great local microbrews!) to enjoy at the top with a view overlooking the Champlain Valley.
+                        We generally use the western-most trail entrance (there is a tiny parking lot just down the road to the North so carpool if you can).
+                        Please view the map below for info on parking, trail, and sandwich shop suggestions.
+                    </p>
+    
+                    <a href="https://mapsengine.google.com/map/edit?mid=zfW0kk3OVnOE.kDUfhuPdgZHQ">Hiking Map (to be embedded)</a>
+    
+                    <p><strong>6:30 PM</strong> We want to welcome all of our traveling guests with a Wisconsin-style brat fry!  Make your way down to Cottonwood to enjoy an afternoon of lawn games and lake time while we serve up brats from Andy's hometown alongside kebabs, tabouli, and salads.</p>
+                </div>
             </section>
-            <section id="sightseeing">
+            <section id="sightseeing" class="row">
                 <h2>Sight-seeing</h2>
-                <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-8 col-lg-offset-2 text-left">
                     <p>Adventure abounds in Vermont!  If you are looking to supplement your visit, we recommend some of the following activities:</p>
-                    <h3>Hiking</h3>
+                    <h3 class="text-center">Hiking</h3>
                     <p>Vermont and Wisconsin share a lot of similarities, but Vermont has mountains! There is a <a href="http://www.champlainareatrails.com/">list of trails</a> in the area with varying degrees of difficulty, and they have a <a href="http://www.champlainareatrails.com/wp-content/uploads/2013/10/Summer_Guide.pdf">great set of trail recommendations</a> based on your interests.</p>
-                    <h3>Bicycling</h3>
+                    <h3 class="text-center">Bicycling</h3>
                     <p>We are in the midst of several scenic bicycling routes. Cottonwood, the reception venue, is located directly adjacent to the Crown Point bridge across Lake Champlain between Vermont and New York. For lots of helpful tips and route suggestions in the area, please see <a href="http://www.champlainbikeways.org/index.htm">Lake Champlain Bikeways</a>.</p>
-                    <h3>Cheese!</h3>
+                    <h3 class="text-center">Cheese!</h3>
                     <p>There is on-going debate over the best cheese-producing state (Vermont or Wisconsin). If you would like to test out some of Vermont's finest, there is the <a href="http://www.vtcheese.com/cheesetrail.htm">VT Cheese Trail</a>, which might take a few days, or you can visit a few local favorites:</p>
-                    <ul class="col-lg-8 col-lg-offset-2 text-left">
+                    <ul class="col-lg-10 col-lg-offset-1 col-xs-offset-1 col-xs-10 text-left list-unstyled">
                         <li>
                             <a href="http://middleburycoop.com/coop/index.php">The Middlebury Natural Foods Co-op</a> sources local, artisan cheeses from around the state and is a favorite one-stop shop.
                         </li>
@@ -101,39 +108,41 @@
                             <a href="http://www.shelburnefarms.org/">Shelburne Farm:</a> A great way to spend a day or half day with kids and adults of all ages. This is a working farm open for educational purposes with award-winning cheddar cheese and grounds designed by Frederick Law Olmsted. Visiting the childrens farm, walking the many trails on the property, or taking a wagon ride to the inn for a stroll in the lakeside gardens are all highly recommended!
                         </li>
                         <li>
-                            Microbreweries: Ottercreek and Wolaver's Organic Ales are co-located in Middlebury. The tasting room also offers delicious sandwiches. To find Ottercreek and any of the area's other fine breweries, see: <a href="http://www.vermontbrewers.com/membermap/">The Vermont Brewers Map</a>.
+                            <strong>Microbreweries</strong>: Ottercreek and Wolaver's Organic Ales are co-located in Middlebury. The tasting room also offers delicious sandwiches. To find Ottercreek and any of the area's other fine breweries, see: <a href="http://www.vermontbrewers.com/membermap/">The Vermont Brewers Map</a>.
                         </li>
                         <li>
-                            Vineyards: We have stopped at Shelburne Vineyard near Shleburne Farm and Shelburne Museum. They offer mostly sweeter whites. If you are interested in exploring other vineyards, check out <a href="http://www.vtgrapeandwinecouncil.com/assets/passports/2013-Passport-Map-and-Directory.pdf">this map</a>.
+                            <strong>Vineyards</strong>: We have stopped at Shelburne Vineyard near Shleburne Farm and Shelburne Museum. They offer mostly sweeter whites. If you are interested in exploring other vineyards, check out <a href="http://www.vtgrapeandwinecouncil.com/assets/passports/2013-Passport-Map-and-Directory.pdf">this map</a>.
                         </li>
                         <li>
-                            Farms and Fruit Picking: Some of my fondest memories of Vermont include afternoons spent fruit and berry picking.  The available harvest over Labor Day weekend differs from year to year so it is always best to consult the farms listed under Addison County on <a href="http://www.pickyourown.org/VT.htm">Pick Your Own</a>. We have had excellent experiences in the past at Champlain Orchards, Douglas Orchards, and Norris Berry Farm (with tons of fresh veggies, too!)
+                            <strong>Farms and Fruit Picking</strong>: Some of my fondest memories of Vermont include afternoons spent fruit and berry picking.  The available harvest over Labor Day weekend differs from year to year so it is always best to consult the farms listed under Addison County on <a href="http://www.pickyourown.org/VT.htm">Pick Your Own</a>. We have had excellent experiences in the past at Champlain Orchards, Douglas Orchards, and Norris Berry Farm (with tons of fresh veggies, too!)
                         </li>
                         <li>
-                            If you will be staying somewhere where you are able to prepare carnivorous meals for yourself, there are "honor system" meat lockers in the area that are also fun to explore.  We have visited Duclos and <a href="https://www.google.com/maps/preview#!q=1026+Sheep+Farm+Rd%2C+Weybridge%2C+VT+05753">Thompson Farm</a>.
+                            <strong>Meat</strong>: If you will be staying somewhere where you are able to prepare carnivorous meals for yourself, there are "honor system" meat lockers in the area that are also fun to explore.  We have visited Duclos and <a href="https://www.google.com/maps/preview#!q=1026+Sheep+Farm+Rd%2C+Weybridge%2C+VT+05753">Thompson Farm</a>.
                         </li>
                         <li>
-                            Golf: Sarah's family enjoys early morning golf at <a href="http://www.basinharbor.com/explore/golf-packages/">Basin Harbor Club</a>.
+                            <strong>Golf</strong>: Sarah's family enjoys early morning golf at <a href="http://www.basinharbor.com/explore/golf-packages/">Basin Harbor Club</a>.
                         </li>
                         <li>
-                            <a href="http://www.vtstateparks.com/htm/swimming.htm">Swimming</a>: There are several state parks in our vicinity with swimming opportunities. Even at its warmest, Lake Champlain can be a little chilly for southerners. D.A.R. State Park, Button Bay State Park, and Kingsland Bay State Park are all recommended.
+                            <a href="http://www.vtstateparks.com/htm/swimming.htm">Swimming</a>: There are several state parks in our vicinity with swimming opportunities.
+                            Even at its warmest, Lake Champlain can be a little chilly for southerners. <abbr title="Daughters of the American Revolution">D.A.R.</abbr> State Park,
+                            Button Bay State Park, and Kingsland Bay State Park are all recommended.
                         </li>
                     </ul>
                 </div>
             </section>
-            <section id="transportation">
+            <section id="transportation" class="row">
                 <h2>Getting Here</h2>
                 <p class="col-xs-12">
                     This will describe the various types of transportation you might need to get around in Vermont.
                 </p>
             </section>
-            <section id="carpooling">
+            <section id="carpooling" class="row">
                 <h2>Carpooling</h2>
             </section>
-            <section id="roomshare">
+            <section id="roomshare" class="row">
                 <h2>Coordinate Sharing Rooms</h2>
             </section>
-            <section id="rsvp">
+            <section id="rsvp" class="row">
                 <h2>RSVP</h2>
                 {% block rsvp %}
                 {% endblock %}
