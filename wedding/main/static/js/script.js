@@ -42,12 +42,12 @@ var RSVPVerifier = (function () {
 
         $('.rsvp .email').parent().replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
 
-        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + firstname + '!<br/>\
+        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + firstname + '!\
             <small>(' + email + ')</small><br/>\
             Please enter the name of your guests or indicate you will be unable to attend below:</p>');
 
         $('.rsvp .verify-container').replaceWith('<div class="form-group">\
-                    <label class="col-lg-12 col-xs-12">\
+                    <label class="col-lg-12 col-xs-12 smaller">\
                         <input type="checkbox" class="form-control" name="notattending" value="true" />\
                         Unable to attend\
                     </label>\
@@ -102,7 +102,11 @@ var RSVPVerifier = (function () {
             var guestlist = data.guests.split('|');
             var guestliststr = guestlist.join(', ');
             guestliststr = guestliststr.replace(/^(.*),(.*)$/, '$1 and $2');
-            message += ' You and your guests make ' + guestlist.length + ': ' + guestliststr;
+            if (guestlist.length > 1) {
+                message += ' You and your guests make ' + guestlist.length + ': ' + guestliststr;
+            } else {
+                message += ' We can\'t wait for you to join us!';
+            }
         }
 
         $('.rsvp').fadeOut(function () {
