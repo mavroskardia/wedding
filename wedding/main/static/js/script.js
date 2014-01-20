@@ -36,12 +36,13 @@ var RSVPVerifier = (function () {
 
     function buildguestform(data) {
         var splits = data.split(' ');
-        var name = splits[1];
-        var email = splits[2];
+        var firstname = splits[1];
+        var lastname = splits[2];
+        var email = splits[3];
 
         $('.rsvp .email').parent().replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
 
-        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + name + '!<br/>\
+        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + firstname + '!<br/>\
             <small>(' + email + ')</small><br/>\
             Please enter the name of your guests or indicate you will be unable to attend below:</p>');
 
@@ -56,7 +57,7 @@ var RSVPVerifier = (function () {
                 </div>');
 
         $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
-            <input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+name+'" />\
+            <input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+(firstname+' '+lastname)+'" />\
             </div>');
 
         $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
@@ -75,8 +76,7 @@ var RSVPVerifier = (function () {
 
         $('.rsvp .submit-rsvp').on('click', function (e) {
             e.preventDefault();
-            $(this).prop('disabled', true);
-            $(this).after('<p class="clearfix col-lg-12 col-xs-12 post-rsvp-message">Submitting your RSVP...</p>');
+            $(this).replaceWith('<p class="clearfix col-lg-12 col-xs-12 post-rsvp-message">Submitting your RSVP...</p>');
 
             $.ajax({
                 url: rsvp_submit_ajax_url,
@@ -94,14 +94,15 @@ var RSVPVerifier = (function () {
     }
 
     function postrsvp(data) {
-        var message = 'Successfully RSVP\'d';
+        var message = 'Thank you for your response.<br/>';
 
         if (data.response == 'no') {
-            message += '. We are sorry you cannot attend!';
+            message += ' We are sorry you cannot attend.';
         } else {
-            var guestlist = data.split('|');
+            var guestlist = data.guests.split('|');
             var guestliststr = guestlist.join(', ');
-            message += 'with ' + guestlist.length + ' guest(s): ' + guestliststr;
+            guestliststr = guestliststr.replace(/^(.*),(.*)$/, '$1 and $2');
+            message += ' You and your guests make ' + guestlist.length + ': ' + guestliststr;
         }
 
         $('.rsvp').fadeOut(function () {

@@ -1,7 +1,8 @@
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic.base import View
 
 from rsvp.models import Guest
 
@@ -18,30 +19,41 @@ def rsvp_ajax(req):
         else:
             try:
                 guest = Guest.objects.get(email=email)
-                ret = HttpResponse('success %s %s' % (guest.name, guest.email))
+                ret = HttpResponse('success {guest.firstname} {guest.lastname} {guest.email}'.format(guest=guest))
             except Guest.DoesNotExist as e:
                 ret = HttpResponse('This email address was not in the guest list. Please check with Andy or Sarah.', status=500)
 
     return HttpResponse(ret)
 
-def rsvp_submit_ajax(req):
+class RsvpSubmitAjax(View):
 
-    ret = {}
+    def post(self, req):
+        ret = {}
 
-    if req.method != 'POST':
-        ret['response'] = 'failure'
-    else:
-        if req.POST['notattending']:
+        guest = get_object_or_404(Guest, email=req.POST['rsvp_email'])
+        guest.rsvpd = True
+
+        if 'notattending' in req.POST:
             ret['response'] = 'no'
+            guest.saidyes = False
         else:
-            guest = Guest.objects.get(email=req.POST['rsvp_email'])
-            guestlist = [guest.name,]
+            guest.saidyes = True
+
+            guestlist = ['%s %s' % (guest.firstname,guest.lastname),]
+            others = []
 
             for name in req.POST:
                 if name.startswith('guests') and req.POST[name].strip():
-                    guestlist.append(req.POST[name].strip())
+                    others.append(req.POST[name].strip())
+
+            guestlist = guestlist + others
+
+            guest.total = len(guestlist)
+            guest.additional = '|'.join(others)
+
+            guest.save()
 
             ret['response'] = 'yes'
             ret['guests'] = '|'.join(guestlist)
 
-    return HttpResponse(json.dumps(ret), content_type='application/json')
+        return HttpResponse(json.dumps(ret), content_type='application/json')
