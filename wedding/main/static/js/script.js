@@ -61,7 +61,7 @@ var RSVPVerifier = (function () {
             </div>');
 
         $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
-            <input type="text" class="form-control guestinput input-lg" placeholder="Name of first guest" name="guests[1]" />\
+            <input type="text" class="form-control guestinput input-lg" placeholder="Additional guest\'s name" name="guests[1]" />\
             </div>');
 
         $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
@@ -76,6 +76,8 @@ var RSVPVerifier = (function () {
 
         $('.rsvp .submit-rsvp').on('click', function (e) {
             e.preventDefault();
+            e.stopImmediatePropagation();
+
             $(this).replaceWith('<p class="clearfix col-lg-12 col-xs-12 post-rsvp-message">Submitting your RSVP...</p>');
 
             $.ajax({
@@ -111,7 +113,9 @@ var RSVPVerifier = (function () {
 
         $('.rsvp').fadeOut(function () {
             $(this).replaceWith('<p class="rsvp-success">' + message + '</p>');
-            $('a[href="#rsvp"]').click();
+            var elt = $('#rsvp');
+            var top = elt.offset().top || 0;
+            $('html,body').animate({ scrollTop: top }, 800, "swing");
         });
 
         $('.rsvp-messaging').fadeOut(function () { $(this).remove(); });

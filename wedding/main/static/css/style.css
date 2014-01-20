@@ -116,3 +116,8 @@ section ul li { margin-bottom: 0.5em; }
 .smaller { font-size: 80%; }
 
 input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
+
+.navbar-collapse {
+    max-height: 100%;
+    text-align: center;
+}
