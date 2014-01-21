@@ -10,9 +10,7 @@ body {
 
 a { color: #f0B435; font-weight: bold; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
 a:hover { color: #b4f035; text-decoration: none; }
-
 a.thumbnail small { font-size: 50%; color: #444; }
-
 a, strong { font-family: "Candal", Arial, sans-serif; font-weight: normal; }
 
 small { text-shadow: none; }
@@ -105,6 +103,15 @@ section ul li { margin-bottom: 0.5em; }
     margin-bottom: 400px;
 }
 
+input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
+
+.nav a { font-family: "Helvetica Neue", "Arial", sans-serif; font-weight: bold; }
+
+.navbar-collapse {
+    max-height: 100%;
+    text-align: center;
+}
+
 .love {
     color: #900;
     text-shadow: 0 -1px 1px #f00;
@@ -112,12 +119,5 @@ section ul li { margin-bottom: 0.5em; }
 }
 
 .relative { position: relative; }
-
 .smaller { font-size: 80%; }
 
-input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
-
-.navbar-collapse {
-    max-height: 100%;
-    text-align: center;
-}
