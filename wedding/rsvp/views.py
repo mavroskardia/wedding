@@ -22,6 +22,8 @@ def rsvp_ajax(req):
                 ret = HttpResponse('success {guest.firstname} {guest.lastname} {guest.email}'.format(guest=guest))
             except Guest.DoesNotExist as e:
                 ret = HttpResponse('This email address was not in the guest list. Please check with Andy or Sarah.', status=500)
+            except Exception as e:
+                ret = HttpResponse('An unknown error occurred: %s' % e)
 
     return HttpResponse(ret)
 

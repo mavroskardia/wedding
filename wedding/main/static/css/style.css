@@ -10,7 +10,10 @@ body {
 
 a { color: #f0B435; font-weight: bold; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
 a:hover { color: #b4f035; text-decoration: none; }
-a.thumbnail small { font-size: 50%; color: #444; }
+a.thumbnail { background-color: transparent; border: none; box-shadow: none; }
+a.thumbnail img { border: solid 1px #ccc; border-radius: 3px; box-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
+a.thumbnail small { font-size: 50%; color: #333; position: relative; top: -10px; }
+
 a, strong { font-family: "Candal", Arial, sans-serif; font-weight: normal; }
 
 small { text-shadow: none; }
@@ -98,6 +101,8 @@ section ul li { margin-bottom: 0.5em; }
     font-family: "Candal", sans-serif;
     font-weight: normal;
 }
+
+#intro small { font-size: 35%; top: -30px; }
 
 #begin {
     margin-bottom: 400px;
