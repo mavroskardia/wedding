@@ -131,10 +131,11 @@ $(document).ready(function () {
         var elt = $($(e.currentTarget).attr('href'));
         var top = elt.offset().top || 0;
         $('html,body').animate({ scrollTop: top }, 800, "swing");
+        $('.navbar-collapse').collapse('hide');
     });
 
     $('.nav .navbar-collapse a').on('click', function () {
-        $('.nav .navbar-toggle').click();
+        $('.navbar-collapse').collapse('hide');
     });
 
     $('.verify').on('click', RSVPVerifier.verify);
