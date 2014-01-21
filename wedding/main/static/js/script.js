@@ -138,6 +138,8 @@ $(document).ready(function () {
     });
 
     $('.verify').on('click', RSVPVerifier.verify);
+    
+    $('img[data-src]').lazyload();
 
 });
 

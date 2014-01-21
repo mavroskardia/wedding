@@ -73,25 +73,27 @@
             </section>
             <section id="other_events">
                 <h2>Other Events</h2>
-                <div class="col-lg-8 col-lg-offset-2 text-left">
-                    <h3>Saturday</h3>
-                    <p>
-                        <strong>11:00 AM</strong> Join us for a late morning hike up
-                        <a href="http://www.vtfishandwildlife.com/library/maps/Wildlife%20Management%20Areas/Essex%20District/Snake%20Mountain%20WMA.pdf">Snake Mountain</a>.
-                        We like to pack sandwiches (and maybe one of the great local microbrews!) to enjoy at the top with a view overlooking the Champlain Valley.
-                        We generally use the western-most trail entrance (there is a tiny parking lot just down the road to the North so carpool if you can).
-                        Please view the map below for info on parking, trail, and sandwich shop suggestions.
-                    </p>
-
-                    <a href="https://mapsengine.google.com/map/edit?mid=zfW0kk3OVnOE.kDUfhuPdgZHQ">Hiking Map (to be embedded)</a>
-
-                    <p>
-                        <strong>6:30 PM</strong> We want to welcome all of our traveling guests with a Wisconsin-style brat fry!
-                        Make your way down to Cottonwood to enjoy an afternoon of lawn games and lake time while we serve up brats
-                        from Andy's hometown alongside kebabs, tabouli, and salads.
-                    </p>
+                <div class="text-left row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h3>Saturday</h3>
+                        <p>
+                            <strong>11:00 AM</strong> Join us for a late morning hike up
+                            <a href="http://www.vtfishandwildlife.com/library/maps/Wildlife%20Management%20Areas/Essex%20District/Snake%20Mountain%20WMA.pdf">Snake Mountain</a>.
+                            We like to pack sandwiches (and maybe one of the great local microbrews!) to enjoy at the top with a view overlooking the Champlain Valley.
+                            We generally use the western-most trail entrance (there is a tiny parking lot just down the road to the North so carpool if you can).
+                            Please view the map below for info on parking, trail, and sandwich shop suggestions.
+                        </p>
+    
+                        <a href="https://mapsengine.google.com/map/edit?mid=zfW0kk3OVnOE.kDUfhuPdgZHQ">Hiking Map (to be embedded)</a>
+    
+                        <p>
+                            <strong>6:30 PM</strong> We want to welcome all of our traveling guests with a Wisconsin-style brat fry!
+                            Make your way down to Cottonwood to enjoy an afternoon of lawn games and lake time while we serve up brats
+                            from Andy's hometown alongside kebabs, tabouli, and salads.
+                        </p>
+                    </div>
                 </div>
-                <div class="col-lg-12 clearfix">
+                <div class="row">
                     <div class="col-lg-4 col-xs-12">
                         <a href="{% static "i/image_5.jpeg" %}" class="thumbnail">
                             <img src="{% static "i/image_5.jpeg" %}" data-src="{% static "i/image_5.jpeg" %}" alt="Sarah and Andy at Snake Mountain" />
@@ -143,7 +145,7 @@
                     </p>
                     <h3>Farms and Fruit Picking</h3>
                     <p>
-                        Some of my fondest memories of Vermont include afternoons spent fruit and berry picking.  The available harvest over Labor Day weekend differs from year to year so it is always best to consult the farms listed under Addison County on <a href="http://www.pickyourown.org/VT.htm">Pick Your Own</a>. We have had excellent experiences in the past at Champlain Orchards, Douglas Orchards, and Norris Berry Farm (with tons of fresh veggies, too!)
+                        Some of Sarah's fondest memories of Vermont include afternoons spent fruit and berry picking. The available harvest over Labor Day weekend differs from year to year so it is always best to consult the farms listed under Addison County on <a href="http://www.pickyourown.org/VT.htm">Pick Your Own</a>. We have had excellent experiences in the past at Champlain Orchards, Douglas Orchards, and Norris Berry Farm (with tons of fresh veggies, too!)
                     </p>
                     <h3>Meat</h3>
                     <p>
@@ -170,7 +172,11 @@
             </section>
             <section id="lodging">
                 <h2>Lodging near Cottonwood</h2>
-                <p class="col-xs-12">The map shows camping, bed and breakfast, and hotel options near the ceremony. Other places to look include <a href="#">Airbnb</a> or <a href="#">VRBO</a>.</p>
+                <p class="col-xs-12">
+                    The map shows camping, bed and breakfast, and hotel options near the ceremony. Other places to look include
+                    <a href="http://goo.gl/1BdTgY">Airbnb</a> or
+                    <a href="http://www.vrbo.com/vacation-rentals/usa/vermont/lake-champlain/addison">VRBO</a>.
+                </p>
                 <div class="col-xs-12">
                     <iframe class="lodgingmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=44.10731,-73.292542&amp;spn=0.35745,0.668106&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msid=212024042247331878172.0004e9941b93d6eccec63&msa=0&ll=44.10731,-73.292542&spn=0.35745,0.668106&dg=feature" style="text-align:left">Wedding Accommodations</a> in a larger map</small>
                     <!--<iframe height="300" frameborder="0" class="lodgingmap" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55507.598545783374!2d-82.394261!3d29.5971475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1387247313489"></iframe>-->
@@ -256,6 +262,7 @@
 
     <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "js/jquery.lazyload.min.js" %}"></script>
     <script type="text/javascript">
         var rsvp_ajax_url = '{% url "rsvp_ajax" %}';
         var rsvp_submit_ajax_url = '{% url "rsvp_submit_ajax" %}';
