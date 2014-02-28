@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     url(r'^', include(main.urls)),
     url(r'^rsvp/', include(rsvp.urls)),
     url(r'^registry/', include(registry.urls, namespace='registry')),
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
 )
