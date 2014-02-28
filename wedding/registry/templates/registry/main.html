@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+
+{% endblock %}
+
+{% block contents %}
+<ul class="list-unstyled">
+{% for activity in activities %}
+    <li>
+        <h2>{{ activity }}</h2>
+        <p><small>{{ activity.blurb }}</small></p>
+        <strong>{{ activity.remaining_units }}</strong> remain at <strong>{{ activity.unit_price }}</strong>
+        <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <span>Give</span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">All!</a></li>
+            </ul>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
