@@ -29,10 +29,10 @@
             <h2>{{ activity }}</h2>
             <p><small>{{ activity.blurb }}</small></p>
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-xs-8 col-md-8 col-lg-3 col-lg-offset-4">
                     <strong>{{ activity.remaining_units }}</strong> remain at <strong>${{ activity.unit_price|floatformat:2 }}</strong>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-4 col-md-2 col-lg-1">
                     <div class="styled-select">
                         <select class="form-control">
                             <option>Gift:</option>

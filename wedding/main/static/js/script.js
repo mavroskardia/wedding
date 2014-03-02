@@ -44,17 +44,41 @@ var RSVPVerifier = (function () {
 
         $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + firstname + '!\
             <small>(' + email + ')</small><br/>\
-            Please enter the name of your guests or indicate you will be unable to attend below:</p>');
+            Please indicate if you will be able to attend and the names of your guests below:</p>');
 
-        $('.rsvp .verify-container').replaceWith('<div class="form-group">\
-                    <label class="col-lg-12 col-xs-12 smaller">\
-                        <input type="checkbox" class="form-control" name="notattending" value="true" />\
-                        Unable to attend\
-                    </label>\
+        $('.rsvp .verify-container').replaceWith('<div class="clear col-lg-4 col-lg-offset-4"> \
+                <hr />\
+                <div class="clearfix">\
+                    <div class="form-group text-left">\
+                        <input id="attending-yes" type="radio" name="attending" value="true" />\
+                        <label for="attending-yes" class="smaller">Attending</label>\
+                        <div class="col-lg-offset-1 col-xs-offset-1">\
+                            <input id="coming-saturday" type="checkbox" name="coming_saturday" value="true" />\
+                            <label for="coming-saturday" class="smaller">Saturday Dinner, too!</label>\
+                        </div>\
+                    </div>\
+                </div>\
+                <div class="clearfix">\
+                    <div class="form-group text-left">\
+                        <input id="attending-no" type="radio" name="attending" value="false" />\
+                        <label for="attending-no" class="smaller">Unable to attend</label>\
+                    </div>\
+                </div>\
+            </div>\
+            <div class="clear col-lg-4 col-lg-offset-4">\
+                <hr />\
+                <div class="form-group text-left">\
+                    <label class="smaller" for="song-request">I will dance if you play...</label>\
+                    <textarea id="song-request" name="song_request" class="form-control" placeholder="Song request!" />\
+                </div>\
+                <div class="form-group text-left">\
+                    <label class="smaller" for="comments">Comments?</label>\
+                    <textarea id="comments" name="comments" class="form-control" placeholder="Any comments are appreciated!" />\
                 </div>\
                 <div class="form-group">\
-                    <button class="col-lg-2 col-lg-offset-5 col-xs-4 col-xs-offset-4 submit-rsvp btn btn-primary btn-lg">RSVP!</button>\
-                </div>');
+                    <button class="col-lg-3 col-lg-offset-4 col-xs-4 col-xs-offset-4 submit-rsvp btn btn-primary btn-lg">RSVP!</button>\
+                </div>\
+            </div>');
 
         $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
             <input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+(firstname+' '+lastname)+'" />\

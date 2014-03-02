@@ -11,12 +11,14 @@ body {
 a { color: #f0B435; font-weight: bold; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
 a:hover { color: #b4f035; text-decoration: none; }
 a.thumbnail { background-color: transparent; border: none; box-shadow: none; }
-a.thumbnail img { border: solid 1px #ccc; border-radius: 3px; box-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
-a.thumbnail small { font-size: 50%; color: #333; position: relative; top: -10px; }
+a.thumbnail img { border: solid 1px #ccc; padding: 5px; background-color: #fff; border-radius: 3px; box-shadow: 1px 1px 1px rgba(0,0,0,0.5); }
+a.thumbnail small { font-size: 75%; color: #333; position: relative; font-family: "Grand Hotel"; }
 
 a, strong { font-family: "Candal", Arial, sans-serif; font-weight: normal; }
 
 small { text-shadow: none; }
+
+.embedded-map { width: 100%; height: 500px; }
 
 .container { width: 100%; }
 
@@ -76,6 +78,8 @@ h3 {
     text-align: center;
 }
 
+hr { margin: 0; }
+
 section {
     width: 100%;
     left: 0;
@@ -83,7 +87,7 @@ section {
     margin-bottom: 1000px;
 }
 
-section p { font-size: 80%; padding: 0 10px; }
+section p { font-size: 80%; }
 section ul { font-size: 70%; }
 section ul li { margin-bottom: 0.5em; }
 
@@ -102,13 +106,16 @@ section ul li { margin-bottom: 0.5em; }
     font-weight: normal;
 }
 
-#intro small { font-size: 35%; top: -30px; }
+#intro small { font-size: 55%; }
 
 #begin {
     margin-bottom: 400px;
 }
 
-input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
+input[type=radio],input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
+
+/* maybe a media query for this one */
+input[type=radio] ~ label,input[type=checkbox] ~ label { position: relative; top: 2px; }
 
 .nav a { font-family: "Helvetica Neue", "Arial", sans-serif; font-weight: bold; }
 
@@ -125,4 +132,5 @@ input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
 
 .relative { position: relative; }
 .smaller { font-size: 80%; }
+.clear { clear: both; }
 
