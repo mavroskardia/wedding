@@ -12,42 +12,48 @@
             <a class="navbar-brand" href="{% url 'home' %}"><span class="love">&hearts;</span></a>
             <a class="navbar-brand" href="{% url 'home' %}">Home</a>
         </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse">
+        <!-- <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="navbar-nav nav">
-                <li><a href="{% url 'home' %}">Home</a></li>                
+                <li><a href="{% url 'home' %}">Home</a></li>
             </ul>
-        </div>
+        </div> -->
     </nav>
 {% endblock %}
 
 
 {% block contents %}
-<section>
-    <ul class="list-unstyled">
+<section class="registry">
+    <p class="lead">
+        Explain the different nature of our registry here and how to pledge your gifts.
+    </p>
     {% for activity in activities %}
-        <li>
-            <h2>{{ activity }}</h2>
-            <p><small>{{ activity.blurb }}</small></p>
-            <div class="row">
-                <div class="col-xs-8 col-md-8 col-lg-3 col-lg-offset-4">
-                    <strong>{{ activity.remaining_units }}</strong> remain at <strong>${{ activity.unit_price|floatformat:2 }}</strong>
+        <div class="row">
+            <h3 class="text-left">
+                <a href="{{ activity.link }}">{{ activity.name }}</a>
+                <br/>
+                <small>{{ activity.blurb }}</small>
+            </h3>
+            <div>
+                <div class="col-xs-6 smaller">
+                    <small>
+                        <strong>{{ activity.remaining_units }}</strong>
+                        remain at
+                        <strong>${{ activity.unit_price|floatformat:2 }}</strong>
+                    </small>
                 </div>
-                <div class="col-xs-4 col-md-2 col-lg-1">
-                    <div class="styled-select">
-                        <select class="form-control">
-                            <option>Gift:</option>
-                            <optgroup>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>All!</option>
-                            </optgroup>
-                        </select>
-                    </div>
+                <div class="col-xs-6 styled-select">
+                    <select class="form-control">
+                        <option>Number to gift:</option>
+                        <optgroup>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>All!</option>
+                        </optgroup>
+                    </select>
                 </div>
             </div>
-        </li>
+        </div>
     {% endfor %}
-    </ul>
 </section>
 {% endblock %}

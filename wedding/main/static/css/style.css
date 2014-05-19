@@ -61,7 +61,7 @@ small { text-shadow: none; }
 }
 
 h1 {
-    font-family: "Dancing Script";
+    font-family: "Dancing Script", cursive, serif;
     font-size: 400%;
 }
 
@@ -76,6 +76,12 @@ h3 {
     font-family: "Candal", sans-serif;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.75);
     text-align: center;
+}
+
+h3 small {
+    font-family: "Grand Hotel", cursive, serif;
+    color: #eee;
+    font-size: 80%;
 }
 
 hr { margin: 0; }
