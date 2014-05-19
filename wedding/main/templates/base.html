@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     <!-- <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
@@ -22,18 +23,25 @@
     {% endblock %}
     <a id="home"></a>
     <div class="contents">
-        <div class="container text-center">    
+        <div class="container text-center">
+            {% if messages %}
+                {% for msg in messages %}
+                <div class="message {{msg.tags}}">
+                    <span>{{ msg }}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
             {% block contents %}
             {% endblock %}
         </div>
     </div>
-    
+
     <div class="fg"></div>
 
     <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{% static "js/jquery.lazyload.min.js" %}"></script>
-    
+
     {% block extrascripts %}
     {% endblock %}
 </body>

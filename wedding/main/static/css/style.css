@@ -118,6 +118,10 @@ section ul li { margin-bottom: 0.5em; }
     margin-bottom: 400px;
 }
 
+.registry {
+    padding-top: 0;
+}
+
 input[type=radio],input[type=checkbox] { width: 20px; height: 20px; display: inline-block; }
 
 /* maybe a media query for this one */

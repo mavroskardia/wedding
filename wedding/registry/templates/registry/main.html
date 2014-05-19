@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="love">&hearts;</span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="love"><i class="fa fa-heart"></i></span></a>
             <a class="navbar-brand" href="{% url 'home' %}">Home</a>
         </div>
         <!-- <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -23,37 +23,44 @@
 
 {% block contents %}
 <section class="registry">
-    <p class="lead">
-        Explain the different nature of our registry here and how to pledge your gifts.
+    <h2>Registry</h2>
+    <p>
+        When the weather turns cool for us in the Northern hemisphere, we will be packing our bags for the land(s) down under.  We will spend a few days sight-seeing in Sydney before beginning a bicycle tour of the south island of New Zealand.  We will begin our trip in Christchurch, take a train to the western coast, then pedal our way through beaches, rainforest, and glaciers before ending our journey in Queensland. We hope that you'll find an activity on our trip that you would like to pledge to support.
     </p>
-    {% for activity in activities %}
-        <div class="row">
-            <h3 class="text-left">
-                <a href="{{ activity.link }}">{{ activity.name }}</a>
-                <br/>
-                <small>{{ activity.blurb }}</small>
-            </h3>
-            <div>
-                <div class="col-xs-6 smaller">
-                    <small>
+    <form class="row" method="post" action="{% url 'registry:pledge' %}">
+        {% csrf_token %}
+        {% for activity in activities %}
+        <div class="col-lg-offset-4">
+            <input type="hidden" name="activity_id_{{ forloop.counter }}" value="{{ activity.id }}" />
+            <div class="form-group">
+                <h3 class="text-left">
+                    <a href="{{ activity.link }}">{{ activity.name }}</a>
+                </h3>
+                <div class="smaller text-left">
+                    <small class="smaller">{{ activity.blurb }}</small>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7 smaller col-lg-3">
                         <strong>{{ activity.remaining_units }}</strong>
                         remain at
                         <strong>${{ activity.unit_price|floatformat:2 }}</strong>
-                    </small>
-                </div>
-                <div class="col-xs-6 styled-select">
-                    <select class="form-control">
-                        <option>Number to gift:</option>
-                        <optgroup>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>All!</option>
-                        </optgroup>
-                    </select>
+                    </div>
+                    <div class="col-xs-5 col-lg-1 styled-select">
+                        <select class="form-control" name="amount_{{ forloop.counter }}">
+                            <option value="">Number:</option>
+                            <optgroup>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>All!</option>
+                            </optgroup>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     {% endfor %}
+        <button class="btn btn-lg btn-primary">Pledge</button>
+    </form>
 </section>
 {% endblock %}
