@@ -28,8 +28,12 @@ class PledgeView(View):
 		for k in request.POST:
 			if k.startswith('activity_id_'):
 				activity = Activity.objects.get(pk=request.POST[k])
-				amount = int(request.POST.get('amount_%s' % k.split('_')[-1], "0") or "0")
+				amount = request.POST.get('amount_%s' % k.split('_')[-1], "0") or "0"
+				if amount == 'all':
+					amount = activity.remaining_units()
+
 				total = amount * activity.unit_price
+
 				if amount:
 					ret.append((activity,amount,total))
 

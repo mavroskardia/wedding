@@ -45,14 +45,14 @@
                         remain at
                         <strong>${{ activity.unit_price|floatformat:2 }}</strong>
                     </div>
-                    <div class="col-xs-5 col-lg-1 styled-select">
+                    <div class="col-xs-5 col-lg-2 styled-select">
                         <select class="form-control" name="amount_{{ forloop.counter }}">
                             <option value="">Number:</option>
                             <optgroup>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
-                                <option>All!</option>
+                                <option value="all">All!</option>
                             </optgroup>
                         </select>
                     </div>
@@ -63,7 +63,7 @@
         <button class="btn btn-lg btn-primary">Pledge</button>
     </form>
     <p class="margintop">
-        If you are looking for different inspiration, <a href="#">these are items</a> that we would like to have in our home some day.
+        If you are looking for different inspiration, <a target="_blank" href="http://www.amazon.com/registry/wedding/1NDNG3Z9Z33LA">these are items</a> that we would like to have in our home some day.
     </p>
 </section>
 {% endblock %}
