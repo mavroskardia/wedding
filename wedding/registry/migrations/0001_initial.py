@@ -15,6 +15,7 @@ class Migration(SchemaMigration):
             ('unit_price', self.gf('django.db.models.fields.DecimalField')(default=0.0, max_digits=6, decimal_places=2)),
             ('num_units', self.gf('django.db.models.fields.IntegerField')(default=1)),
             ('blurb', self.gf('django.db.models.fields.CharField')(default='no blurb yet!', max_length=1024)),
+            ('link', self.gf('django.db.models.fields.URLField')(max_length=200)),
         ))
         db.send_create_signal(u'registry', ['Activity'])
 
@@ -42,6 +43,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Activity'},
             'blurb': ('django.db.models.fields.CharField', [], {'default': "'no blurb yet!'", 'max_length': '1024'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'link': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
             'num_units': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'unit_price': ('django.db.models.fields.DecimalField', [], {'default': '0.0', 'max_digits': '6', 'decimal_places': '2'})

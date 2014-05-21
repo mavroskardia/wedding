@@ -10,7 +10,7 @@ class Activity(models.Model):
     unit_price = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
     num_units = models.IntegerField(default=1)
     blurb = models.CharField(max_length=1024, default="no blurb yet!")
-    link = models.URLField()
+    link = models.URLField(blank=True)
 
     def total_cash(self):
         return self.unit_price * self.num_units
