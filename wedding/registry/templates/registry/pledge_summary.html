@@ -25,34 +25,52 @@
 <section class="registry">
 	<h2>Pledge Summary</h2>
 	{% if pledges %}
+	<form action="{% url 'registry:commit' %}" method="post">
+		{% csrf_token %}
+		<input type="hidden" id="commit_type" name="commit_type" value="" />
 		<div class="row">
-		<ul class="text-left col-xs-offset-2 col-lg-offset-5">
-		{% for pledge in pledges %}
-			{% if pledge.1 > 0 %}
-			<li>{{ pledge.1 }} {{ pledge.0.name }} for ${{ pledge.2|floatformat:2 }}</li>
-			{% endif %}
-		{% endfor %}
-		</ul>
-		<p>
-			You pledged {{ pledges|length }} activit{{ pledges|length|pluralize:"y,ies" }} for a total of ${{ grand_total|floatformat:2 }}. Thank you!
-		</p>
-		<div class="form-group col-lg-4 col-lg-offset-4">
-			<input type="email" class="form-control" placeholder="Your email address" />
+			<ul class="text-left col-xs-offset-2 col-lg-offset-5">
+			{% for pledge in pledges %}
+				{% if pledge.1 > 0 %}
+				<li>
+					<b>{{ pledge.1 }}</b> {{ pledge.0.name }} for ${{ pledge.2|floatformat:2 }}
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+			<p>
+				You pledged {{ pledges|length }} activit{{ pledges|length|pluralize:"y,ies" }} for a total of ${{ grand_total|floatformat:2 }}. Thank you!
+			</p>
 		</div>
+		<div class="row">
+			<div class="form-group col-lg-4 col-lg-offset-4">
+				<input type="email" name="email" class="form-control" placeholder="Your email address" />
+			</div>
 		</div>
 		<div class="row">
 			<p>Commit your support via:</p>
-			<button class="btn btn-lg btn-primary"><i class="fa fa-google smaller"></i> Google Wallet</button>
-			<button class="btn btn-lg btn-primary"><i class="fa fa-credit-card smaller"></i> PayPal</button>
+			<button id="wallet" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-google smaller"></i> Google Wallet</button>
+			<button id="paypal" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-credit-card smaller"></i> PayPal</button>
 			<h3><i class="fa fa-envelope"></i> Or via mail:</h3>
 			<address class="smaller">
 				353 NE Boulevard<br/>
 				Gainesville, FL 32601
 			</address>
-			<button class="btn btn-lg btn-primary"><i class="fa fa-send smaller"></i> Confirm</button>
+			<button id="mail" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-send smaller"></i> Confirm</button>
 		</div>
+	</form>
 	{% else %}
 		<p>I'm sorry, we were unable to record any pledges for you.</p>
 	{% endif %}
 </section>
+{% endblock %}
+
+{% block extrascripts %}
+	<script>
+		$(document).ready(function () {
+			$('#wallet').click(function () { $('#commit_type').val('wallet'); });
+			$('#paypal').click(function () { $('#commit_type').val('paypal'); });
+			$('#mail').click(function () { $('#commit_type').val('mail'); });
+		});
+	</script>
 {% endblock %}

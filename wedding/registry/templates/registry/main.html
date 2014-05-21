@@ -27,7 +27,7 @@
     <p>
         When the weather turns cool for us in the Northern hemisphere, we will be packing our bags for the land(s) down under.  We will spend a few days sight-seeing in Sydney before beginning a bicycle tour of the south island of New Zealand.  We will begin our trip in Christchurch, take a train to the western coast, then pedal our way through beaches, rainforest, and glaciers before ending our journey in Queensland. We hope that you'll find an activity on our trip that you would like to pledge to support.
     </p>
-    <form class="row" method="post" action="{% url 'registry:pledge' %}">
+    <form method="post" action="{% url 'registry:pledge' %}">
         {% csrf_token %}
         {% for activity in activities %}
         <div class="col-lg-offset-4">

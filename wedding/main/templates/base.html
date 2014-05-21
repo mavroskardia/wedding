@@ -26,7 +26,7 @@
         <div class="container text-center">
             {% if messages %}
                 {% for msg in messages %}
-                <div class="message {{msg.tags}}">
+                <div class="message alert alert-{{msg.tags}}">
                     <span>{{ msg }}</span>
                 </div>
                 {% endfor %}

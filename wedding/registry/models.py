@@ -30,12 +30,9 @@ class Activity(models.Model):
 
 class Giftor(models.Model):
     activity = models.ForeignKey(Activity)
-    guest = models.ForeignKey('rsvp.Guest')
+    email = models.EmailField()
     num_bought = models.IntegerField(max_length=1024, default=0)
     paid = models.BooleanField(default=False)
-
-    def email(self):
-        return self.guest.email
 
     def __unicode__(self):
         return '%s: %s (%s)' % (self.activity, self.guest, self.num_bought)
