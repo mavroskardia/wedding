@@ -6,7 +6,7 @@ from django.views.generic.base import View
 
 from rsvp.models import Guest
 
-# Create your views here.
+
 def rsvp_ajax(req):
 
     email = 'boo'
@@ -21,7 +21,9 @@ def rsvp_ajax(req):
                 guest = Guest.objects.get(email=email)
                 ret = HttpResponse('success {guest.firstname} {guest.lastname} {guest.email}'.format(guest=guest))
             except Guest.DoesNotExist as e:
-                ret = HttpResponse('This email address was not in the guest list. Please check with Andy or Sarah.', status=500)
+                guest = Guest(email=email, rsvpd=False, saidyes=False, coming_to_welcome=False)
+                guest.save()
+                ret = HttpResponse('success <new> Last {guest.email}'.format(guest=guest))
             except Exception as e:
                 ret = HttpResponse('An unknown error occurred: %s' % e)
 
@@ -40,18 +42,25 @@ class RsvpSubmitAjax(View):
             guest.saidyes = False
         else:
             guest.saidyes = True
-
+            
+            if 'guests[0]' in req.POST:
+                namepieces = req.POST['guests[0]'].split(' ')
+                guest.firstname, guest.lastname = namepieces[0], namepieces[1]
+            
             guestlist = ['%s %s' % (guest.firstname,guest.lastname),]
             others = []
 
             for name in req.POST:
-                if name.startswith('guests') and req.POST[name].strip():
+                if name.startswith('guests') and not name.endswith('[0]') and req.POST[name].strip():
                     others.append(req.POST[name].strip())
 
             guestlist = guestlist + others
 
             guest.total = len(guestlist)
             guest.additional = '|'.join(others)
+            guest.song = req.POST.get('song_request', 'no request')
+            guest.comments = req.POST.get('comments', 'no comments')
+            guest.coming_to_welcome = req.POST.get('coming_saturday', False)
 
             guest.save()
 
