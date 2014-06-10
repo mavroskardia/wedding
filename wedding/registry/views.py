@@ -56,5 +56,12 @@ class CommitPledgeView(View):
     template_name = 'registry/commit.html'
 
     def post(self, request, *args, **kwargs):
-    	messages.info(request, 'committed to l00t dollaz')
-        return render(request, self.template_name, {})
+    	email = request.POST.get('email', None)
+    	commit_type = request.POST.get('commit_type', None)
+
+    	if not commit_type:
+    		messages.error(request, 'Could not determine how you are commiting to your pledge.')
+    		return HttpResponseRedirect(reverse('registry:main'))
+
+
+    	return render(request, self.template_name, {})
