@@ -42,7 +42,13 @@ var RSVPVerifier = (function () {
 
         $('.rsvp .email').parent().replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
 
-        $('.rsvp-messaging').append('<p>Thanks for RSVPing, ' + firstname + '!\
+        var msg = '<p>Thanks for RSVPing';
+        
+        if (firstname != '<new>') {
+            msg += ', ' + firstname;
+        }
+      
+        $('.rsvp-messaging').append(msg + '\
             <small>(' + email + ')</small><br/>\
             Please indicate if you will be able to attend and the names of your guests below:</p>');
 
@@ -80,15 +86,24 @@ var RSVPVerifier = (function () {
                 </div>\
             </div>');
 
-        $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
-            <input type="text" class="form-control guestinput input-lg" name="guests[0]" disabled value="'+(firstname+' '+lastname)+'" />\
-            </div>');
-
-        $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
+        var guestlisthtml = '<div class="form-group col-lg-4 col-lg-offset-4">\
+            <input type="text" class="form-control guestinput input-lg" name="guests[0]"';
+        
+        if (firstname == '<new>') {
+            guestlisthtml += ' placeholder="Enter your name here"';
+        } else {
+            guestlisthtml += ' disabled value="' + (firstname + ' ' + lastname) + '" ';
+        }
+        
+        guestlisthtml += ' />\
+            </div>';
+        
+        $('.rsvp .guests')
+            .append(guestlisthtml)
+            .append('<div class="form-group col-lg-4 col-lg-offset-4">\
             <input type="text" class="form-control guestinput input-lg" placeholder="Additional guest\'s name" name="guests[1]" />\
-            </div>');
-
-        $('.rsvp .guests').append('<div class="form-group col-lg-4 col-lg-offset-4">\
+            </div>')
+            .append('<div class="form-group col-lg-4 col-lg-offset-4">\
             <button class="addguest btn btn-default"><b>&plus;</b> Add Guest</button>\
             </div>');
 
