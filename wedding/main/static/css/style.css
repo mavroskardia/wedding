@@ -144,3 +144,19 @@ input[type=radio] ~ label,input[type=checkbox] ~ label { position: relative; top
 .smaller { font-size: 80%; }
 .clear { clear: both; }
 .margintop { margin-top: 20px; }
+
+#items {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+}
+#items span { color: #ccc; }
+#items .badge { color: #fff; }
+#items .dropdown-menu {
+    background-color: #333;
+    color: #ddd;
+}
+#items .dropdown a:hover,
+#items .dropdown a:focus, {
+    background-color: transparent;
+}

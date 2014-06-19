@@ -36,17 +36,15 @@ class RsvpSubmitAjax(View):
 
         guest = get_object_or_404(Guest, email=req.POST['rsvp_email'])
         guest.rsvpd = True
+        guest.saidyes = req.POST.get('attending', 'false') == 'true'
+        ret['response'] = 'yes' if guest.saidyes else 'no'
 
-        if 'notattending' in req.POST:
-            ret['response'] = 'no'
-            guest.saidyes = False
-        else:
-            guest.saidyes = True
-            
+        if guest.saidyes:
+
             if 'guests[0]' in req.POST:
                 namepieces = req.POST['guests[0]'].split(' ')
                 guest.firstname, guest.lastname = namepieces[0], namepieces[1]
-            
+
             guestlist = ['%s %s' % (guest.firstname,guest.lastname),]
             others = []
 
