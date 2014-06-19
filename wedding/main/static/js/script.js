@@ -43,14 +43,14 @@ var RSVPVerifier = (function () {
         $('.rsvp .email').parent().replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
 
         var msg = '<p>Thanks for RSVPing';
-        
+
         if (firstname != '<new>') {
             msg += ', ' + firstname;
         }
-      
+
         $('.rsvp-messaging').append(msg + '\
             <small>(' + email + ')</small><br/>\
-            Please indicate if you will be able to attend and the names of your guests below:</p>');
+            Please indicate if you will be able to attend, your name, and the names of your guests below:</p>');
 
         $('.rsvp .verify-container').replaceWith('<div class="clear col-lg-4 col-lg-offset-4"> \
                 <hr />\
@@ -88,16 +88,16 @@ var RSVPVerifier = (function () {
 
         var guestlisthtml = '<div class="form-group col-lg-4 col-lg-offset-4">\
             <input type="text" class="form-control guestinput input-lg" name="guests[0]"';
-        
+
         if (firstname == '<new>') {
             guestlisthtml += ' placeholder="Enter your name here"';
         } else {
             guestlisthtml += ' disabled value="' + (firstname + ' ' + lastname) + '" ';
         }
-        
+
         guestlisthtml += ' />\
             </div>';
-        
+
         $('.rsvp .guests')
             .append(guestlisthtml)
             .append('<div class="form-group col-lg-4 col-lg-offset-4">\
@@ -177,12 +177,19 @@ $(document).ready(function () {
         $('.navbar-collapse').collapse('hide');
     });
 
-    $('.verify').on('click', RSVPVerifier.verify);
-    
+    $('.verify').on('click', function (e) {
+        RSVPVerifier.verify(e);
+        $('.fg').fadeOut('fast');
+    });
+
     $('img').lazyload({
-        threshold: 200,
+        event: 'myimgload',
         effect: 'fadeIn'
     });
-    
+
+    setTimeout(function () {
+        $('img').trigger('myimgload');
+    }, 500);
+
 });
 
