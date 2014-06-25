@@ -13,5 +13,4 @@ class Guest(models.Model):
     coming_to_welcome = models.BooleanField()
 
     def __unicode__(self):
-        return '%s %s' % (self.firstname, self.lastname)
-    
+        return '%s (%s %s)' % (self.email, self.firstname, self.lastname)
