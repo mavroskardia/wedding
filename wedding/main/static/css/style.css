@@ -150,13 +150,17 @@ input[type=radio] ~ label,input[type=checkbox] ~ label { position: relative; top
     top: 4px;
     right: 10px;
 }
+
 #items span { color: #ccc; }
+
 #items .badge { color: #fff; }
+
 #items .dropdown-menu {
     background-color: #333;
     color: #ddd;
 }
-#items .dropdown a:hover,
-#items .dropdown a:focus, {
+
+li#items.dropdown a:hover,
+li#items.dropdown a:focus {
     background-color: transparent;
 }

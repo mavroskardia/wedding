@@ -42,7 +42,7 @@ var RSVPVerifier = (function () {
 
         $('.rsvp .email').parent().replaceWith('<input type="hidden" name="rsvp_email" value="' + email + '" />');
 
-        var msg = '<p>Thanks for RSVPing';
+        var msg = '<p>Thank you';
 
         if (firstname != '<new>') {
             msg += ', ' + firstname;
@@ -50,7 +50,7 @@ var RSVPVerifier = (function () {
 
         $('.rsvp-messaging').append(msg + '\
             <small>(' + email + ')</small><br/>\
-            Please indicate if you will be able to attend, your name, and the names of your guests below:</p>');
+            <strong>Before we can process your RSVP</strong>, please indicate if you will be able to attend, your name, and the names of your guests below:</p>');
 
         $('.rsvp .verify-container').replaceWith('<div class="clear col-lg-4 col-lg-offset-4"> \
                 <hr />\
