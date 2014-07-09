@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block nav %}
     <nav id="menu" class="nav navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><span class="love"><i class="fa fa-heart"></i></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="love"><i class="fa fa-heart"></i></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
         </div>
         <li id="items" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -11,8 +13,8 @@
                 <span> Items </span>
                 <i class="fa fa-caret-down"></i>
             </a>
-            <ul class="dropdown-menu" role="menu">
-                <li>You have selected 0 items.</li>
+            <ul id="itemlist" class="dropdown-menu" role="menu">
+                <li id="summary">You have selected <strong id="item_total">0</strong> combined items for a total of $<span id="pledge_total">0.00</span>.</li>
                 <li class="divider"></li>
                 <li>
                     <button class="btn btn-primary">Pledge</button>
@@ -29,7 +31,7 @@
     <p>
         When the weather turns cool for us in the Northern hemisphere, we will be packing our bags for the land(s) down under.  We will spend a few days sight-seeing in Sydney before beginning a bicycle tour of the south island of New Zealand.  We will begin our trip in Christchurch, take a train to the western coast, then pedal our way through beaches, rainforest, and glaciers before ending our journey in Queensland. We hope that you'll find an activity on our trip that you would like to pledge to support.
     </p>
-    <form method="post" action="{% url 'registry:pledge' %}">
+    <form id="pledge_form" class="smaller" method="post" action="{% url 'registry:pledge' %}">
         {% csrf_token %}
         {% for activity in activities %}
         <div class="col-lg-offset-4">
@@ -68,4 +70,8 @@
         If you are looking for different inspiration, <a target="_blank" href="http://www.amazon.com/registry/wedding/1NDNG3Z9Z33LA">these are items</a> that we would like to have in our home some day.
     </p>
 </section>
+{% endblock %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="{% static "js/registry.js" %}"></script>
 {% endblock %}

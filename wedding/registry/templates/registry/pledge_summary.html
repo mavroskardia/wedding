@@ -11,12 +11,8 @@
             </button>
             <a class="navbar-brand" href="{% url 'home' %}"><span class="love"><i class="fa fa-heart"></i></span></a>
             <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'registry:main' %}">Registry</a>
         </div>
-        <!-- <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="navbar-nav nav">
-                <li><a href="{% url 'home' %}">Home</a></li>
-            </ul>
-        </div> -->
     </nav>
 {% endblock %}
 
@@ -29,11 +25,14 @@
 		{% csrf_token %}
 		<input type="hidden" id="commit_type" name="commit_type" value="" />
 		<div class="row">
+			<p>
+				If you would like to adjust your pledge, please <a href="{% url 'registry:main' %}">go back to the registry</a>.
+			</p>
 			<ul class="text-left col-xs-offset-2 col-lg-offset-5">
 			{% for pledge in pledges %}
 				{% if pledge.1 > 0 %}
 				<li>
-					<b>{{ pledge.1 }}</b> {{ pledge.0.name }} for ${{ pledge.2|floatformat:2 }}
+					<b>{{ pledge.1 }}</b>&times; {{ pledge.0.name }} for ${{ pledge.2|floatformat:2 }}
 				</li>
 				{% endif %}
 			{% endfor %}
@@ -43,22 +42,23 @@
 			</p>
 		</div>
 		<div class="row">
-			<div class="form-group col-lg-4 col-lg-offset-4">
-				<input type="email" name="email" class="form-control" placeholder="Your email address" />
-			</div>
-		</div>
-		<div class="row">
 			<p>Commit your support via:</p>
-			<button id="wallet" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-google smaller"></i> Google Wallet</button>
-			<small class="smaller">(learn more)</small>
-			<button id="paypal" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-credit-card smaller"></i> PayPal</button>
-			<small>(<a href="https://www.google.com/wallet/send-money/">learn more</a>)</small>
+			<div class="ib border-right smaller">
+				<button id="wallet" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-google smaller"></i> Google Wallet</button>
+				<br/>
+				<small class="smaller">(<a target="_blank" href="https://www.google.com/wallet/send-money/">learn more</a>)</small>
+			</div>
+			<div class="ib smaller">
+				<button id="paypal" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-credit-card smaller"></i> PayPal</button>
+				<br/>
+				<small class="smaller">(<a target="_blank" href="https://www.paypal.com/webapps/mpp/send-money-online">learn more</a>)</small>
+			</div>
 			<h3><i class="fa fa-envelope"></i> Or via mail:</h3>
 			<address class="smaller">
 				353 NE Boulevard<br/>
 				Gainesville, FL 32601
 			</address>
-			<button id="mail" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-send smaller"></i> Confirm</button>
+			<button id="mail" type="submit" class="btn btn-lg btn-primary"><i class="fa fa-send smaller"></i> USPS Mail</button>
 		</div>
 	</form>
 	{% else %}

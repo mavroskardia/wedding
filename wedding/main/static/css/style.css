@@ -140,15 +140,20 @@ input[type=radio] ~ label,input[type=checkbox] ~ label { position: relative; top
     font-size: 120%;
 }
 
+.ib { display: inline-block; }
 .relative { position: relative; }
 .smaller { font-size: 80%; }
 .clear { clear: both; }
 .margintop { margin-top: 20px; }
 
+.border-right {
+    border-right: solid 1px #fff;
+}
+
 #items {
     position: absolute;
     top: 4px;
-    right: 10px;
+    right: 75px;
 }
 
 #items span { color: #ccc; }
@@ -158,9 +163,14 @@ input[type=radio] ~ label,input[type=checkbox] ~ label { position: relative; top
 #items .dropdown-menu {
     background-color: #333;
     color: #ddd;
+    padding: 1em;
+    right: 0;
+    left: auto;
+    position: absolute;
 }
 
 li#items.dropdown a:hover,
+li#items.dropdown a:active,
 li#items.dropdown a:focus {
     background-color: transparent;
 }

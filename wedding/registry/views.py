@@ -1,5 +1,7 @@
+import json
+
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views.generic import View
 from django.contrib import messages
@@ -39,10 +41,15 @@ class PledgeView(View):
         for k in request.POST:
             if k.startswith('activity_id_'):
                 activity = Activity.objects.get(pk=request.POST[k])
-                amount = int(request.POST.get('amount_%s' %
-                             k.split('_')[-1], "0") or "0")
+                amount = request.POST.get('amount_%s' % k.split('_')[-1], "0")
                 if amount == 'all':
                     amount = activity.remaining_units()
+                else:
+                    if not amount:
+                        continue
+                        #messages.error(request, 'I was not able to record any pledges for you. Please choose what you would like to pledge below, then click the Pledge button.')
+
+                    amount = int(amount)
 
                 total = amount * activity.unit_price
 
@@ -65,3 +72,33 @@ class CommitPledgeView(View):
 
 
     	return render(request, self.template_name, {})
+
+
+class UpdateAjaxView(View):
+
+    def post(self, request, *args, **kwargs):
+        activities = {}
+
+        for key in request.POST:
+            if key.startswith('activity_id_'):
+                activityid = request.POST[key]
+                activity = Activity.objects.get(pk=activityid)
+                num = request.POST.get('amount_' + activityid, '0')
+
+                if num == 'all':
+                    num = activity.remaining_units()
+
+                num = 0 if not num else int(num)
+
+                if num > 0:
+                    activities[activity.name] = (num, float(num * activity.unit_price))
+
+        itemtotal = sum([activities[k][0] for k in activities])
+        pledgetotal = sum([activities[k][1] for k in activities])
+
+        activities['numitems'] = len(activities)
+        activities['pledgetotal'] = pledgetotal
+        activities['itemtotal'] = itemtotal
+        request.session['pledges'] = activities
+
+        return HttpResponse(json.dumps(activities))
