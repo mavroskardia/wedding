@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
+{% block nav %}
+    <nav id="menu" class="nav navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="love"><i class="fa fa-heart"></i></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'registry:main' %}">Registry</a>
+        </div>
+    </nav>
+{% endblock %}
+
 {% block contents %}
-	commitment
+	<section>
+		<p>You have successfully pledged ${{ pledges.grand_total|floatformat:2 }} via {{ commit_type }} to our honeymoon. Thank you!</p>
+	</section>
 {% endblock %}

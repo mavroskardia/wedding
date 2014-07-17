@@ -31,7 +31,13 @@ class PledgeView(View):
                              one activity before pledging.')
             return HttpResponseRedirect(reverse('registry:main'))
 
-        grand_total = sum([t[2] for t in pledges])
+        grand_total = float(sum([t[2] for t in pledges]))
+
+        request.session['final_pledge'] = {
+            'grand_total': grand_total,
+            'pledges': [{'id':str(p[0].id),'num':p[1]} for p in pledges]
+        }
+
         return render(request, self.summary_template_name,
                       {'pledges': pledges, 'grand_total': grand_total})
 
@@ -70,8 +76,7 @@ class CommitPledgeView(View):
     		messages.error(request, 'Could not determine how you are commiting to your pledge.')
     		return HttpResponseRedirect(reverse('registry:main'))
 
-
-    	return render(request, self.template_name, {})
+    	return render(request, self.template_name, {'commit_type': commit_type, 'pledges': request.session['final_pledge']})
 
 
 class UpdateAjaxView(View):
