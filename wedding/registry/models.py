@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Sum
+from django.utils import timezone
 
 import locale
 locale.setlocale(locale.LC_ALL, '' )
@@ -30,9 +31,10 @@ class Activity(models.Model):
 
 class Giftor(models.Model):
     activity = models.ForeignKey(Activity)
-    email = models.EmailField()
+    date = models.DateTimeField(default=timezone.now)
+    email = models.EmailField(blank=True)
     num_bought = models.IntegerField(max_length=1024, default=0)
     paid = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return '%s: %s (%s)' % (self.activity, self.guest, self.num_bought)
+        return '%s: %s (%s)' % (self.activity, self.email, self.num_bought)

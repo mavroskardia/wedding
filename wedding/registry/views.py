@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.views.generic import View
 from django.contrib import messages
 
-from .models import Activity
+from .models import Activity, Giftor
 from rsvp.models import Guest
 
 
@@ -75,6 +75,14 @@ class CommitPledgeView(View):
     	if not commit_type:
     		messages.error(request, 'Could not determine how you are commiting to your pledge.')
     		return HttpResponseRedirect(reverse('registry:main'))
+
+        final_pledge = request.session['final_pledge']
+        total = final_pledge['grand_total']
+        pledges = final_pledge['pledges']
+
+        for p in pledges:
+            giftor = Giftor(activity_id=p['id'], num_bought=p['num'])
+            giftor.save()
 
     	return render(request, self.template_name, {'commit_type': commit_type, 'pledges': request.session['final_pledge']})
 

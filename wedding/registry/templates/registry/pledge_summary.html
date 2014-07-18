@@ -70,9 +70,20 @@
 {% block extrascripts %}
 	<script>
 		$(document).ready(function () {
-			$('#wallet').click(function () { $('#commit_type').val('wallet'); });
-			$('#paypal').click(function () { $('#commit_type').val('paypal'); });
-			$('#mail').click(function () { $('#commit_type').val('mail'); });
+			$('#wallet').click(function () {
+				$('#commit_type').val('wallet');
+			});
+
+			$('#paypal').click(function () {
+				$('#commit_type').val('paypal');
+				var url = 'https://www.paypal.com/us/sendmoney?amount_ccode=USD&amount=' + {{ grand_total|floatformat:2 }} + '&email=chryso@gmail.com';
+				window.open(url);
+			});
+
+			$('#mail').click(function () {
+				$('#commit_type').val('mail');
+			});
 		});
 	</script>
 {% endblock %}
+
