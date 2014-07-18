@@ -73,6 +73,13 @@
 		$(document).ready(function () {
 			$('#wallet').click(function () {
 				$('#commit_type').val('wallet');
+				var body = 'Sarah and Andy,%0d%0dI am sending you ${{ grand_total|floatformat:2 }} for the following activities as my contribution to your honeymoon:%0d';
+				{% for p in pledges %}
+				body += '%0d • {{ p.1 }}× {{ p.0.name }}';
+				{% endfor %}
+				body += '%0d%0d[Please use the "Attach Money" icon below to attach ${{grand_total|floatformat:2}}, then replace this with your name. Thank you so much!]';
+				var url = 'mailto:chryso@gmail.com?subject=My Contribution to your Honeymoon!&body=' + body;
+				window.open(url);
 			});
 
 			$('#paypal').click(function () {
