@@ -15,8 +15,10 @@ class ActivityListView(View):
     model = Activity
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name,
-                      {'activities': self.model.objects.all()})
+        return render(request, self.template_name, {
+            'activities': self.model.objects.all(),
+            'final_pledge': request.session.get('final_pledge', {'pledges':[]})
+            })
 
 
 class PledgeView(View):
@@ -53,7 +55,6 @@ class PledgeView(View):
                 else:
                     if not amount:
                         continue
-                        #messages.error(request, 'I was not able to record any pledges for you. Please choose what you would like to pledge below, then click the Pledge button.')
 
                     amount = int(amount)
 

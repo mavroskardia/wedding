@@ -74,4 +74,16 @@
 
 {% block extrascripts %}
     <script type="text/javascript" src="{% static "js/registry.js" %}"></script>
+    <script type="text/javascript">
+        // set the saved values on the dropdowns
+        $(document).ready(function () {
+            var savedPledges = [];
+            {% for pledge in final_pledge.pledges %}savedPledges.push([{{pledge.id}}, {{pledge.num}}]);
+            {% endfor %}
+
+            $.each(savedPledges, function () {
+                $('select[name="amount_'+this[0]+'"]').val(this[1]);
+            });
+        });
+    </script>
 {% endblock %}
