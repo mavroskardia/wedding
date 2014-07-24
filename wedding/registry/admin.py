@@ -11,7 +11,7 @@ class GiftorInline(admin.TabularInline):
 
 class ActivityAdmin(admin.ModelAdmin):
     model = Activity
-    list_display = ('name', 'unit_price', 'num_units', 'blurb', 'link',)
+    list_display = ('name', 'unit_price', 'num_units', 'blurb', 'link', 'remaining_units')
     readonly_fields = ('total_cash', 'remaining_cash', 'remaining_units',)
 
     inlines = [GiftorInline, ]
