@@ -26,6 +26,8 @@ class Activity(models.Model):
         total_bought = self.giftor_set.all().aggregate(Sum('num_bought'))['num_bought__sum'] or 0
         return self.num_units - total_bought
 
+    remaining_units.admin_order_field = 'num_units'
+
     def __unicode__(self):
         return self.name
 
