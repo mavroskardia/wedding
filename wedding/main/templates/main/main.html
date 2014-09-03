@@ -35,10 +35,10 @@
 <section id="intro">
                 <div class="col-xs-12 col-lg-12">
                     <p><strong>Andy</strong>and <strong>Sarah</strong></p>
-                    <p>are getting hitched</p>
+                    <p>were hitched on</p>
                     <p><strong>8.31.14</strong></p>
-                    <p>at Cottonwood</p>
-                    <p>in West Addison, VT</p>
+                    <p>at Cottonwood in West Addison, VT</p>
+                    <p>That's <strong id="countdown"></strong> ago!</p>
                 </div>
                 <div class="col-lg-6 col-lg-offset-3 clearfix">
                     <a href="{% static "i/f2t.jpg" %}" class="thumbnail">
@@ -277,5 +277,10 @@
         var rsvp_ajax_url = '{% url "rsvp_ajax" %}';
         var rsvp_submit_ajax_url = '{% url "rsvp_submit_ajax" %}';
     </script>
-    <script type="text/javascript" src="{% static "js/script.js" %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           new CountUp().init(); 
+        });
+    </script>
 {% endblock %}

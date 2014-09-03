@@ -193,3 +193,36 @@ $(document).ready(function () {
 
 });
 
+var CountUp = (function () {
+    function CountUp() {
+        var self = this;
+    }
+    
+    CountUp.prototype.init = function () {
+        var startDate = new Date('2014/08/31 16:58');
+
+        window.setInterval(function () {
+            var msLeft = new Date() - startDate;
+            var e = document.getElementById('countdown');
+
+            var weeks = (msLeft / 604800000) | 0;
+            msLeft -= weeks * 604800000;
+
+            var days = (msLeft / 86400000) | 0;
+            msLeft -= days * 86400000;
+
+            var hours = (msLeft / 3600000) | 0;
+            msLeft -= hours * 3600000;
+
+            var minutes = (msLeft / 60000) | 0;
+            msLeft -= minutes * 60000;
+
+            var seconds = (msLeft / 1000) | 0;
+            msLeft -= seconds * 1000;
+
+            e.innerHTML = (weeks + ' weeks, ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, and ' + seconds + ' seconds');
+        }, 1000);
+    };
+    
+    return CountUp;
+}());
